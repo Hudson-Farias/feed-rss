@@ -9,5 +9,5 @@ async def main():
     data = await anilist_calendary()
     json_creater(data)
 
-    
+
 run(main())

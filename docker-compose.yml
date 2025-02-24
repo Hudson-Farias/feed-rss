@@ -1,0 +1,7 @@
+services:
+  feed_rss:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    restart: always
