@@ -1,30 +1,24 @@
-from fastapi import FastAPI, Response
-from feedgen.feed import FeedGenerator
-
-from anilist.calendary import anilist_calendary
+from fastapi import FastAPI
+from importlib import import_module
+from os import walk
+from os.path import join
 
 app = FastAPI()
 
-@app.get('/calendary', response_class = Response)
-async def rss_feed():
-    fg = FeedGenerator()
-    fg.id('https://example.com/rss')
-    fg.title('Anime calendar RSS')
-    fg.link(href = 'https://example.com', rel = 'alternate')
-    fg.language('pt-br')
-    fg.description('Anime calendar.')
+def load(subapp: FastAPI, directory: str = "routers"):
+    import_cache = {}
 
+    for root, _, files in walk(directory):
+        for file in files:
+            if not file.startswith("__") and file.endswith(".py"):
+                path = join(root, file).replace(".py", "").replace("/", ".").replace("\\", ".")
 
-    data = await anilist_calendary()
+                if path not in import_cache:
+                    import_cache[path] = import_module(path)
 
-    for item in data:
-        payload = item['media']
-        if payload['isAdult']: continue
+                module = import_cache[path]
+                subapp.include_router(module.router)
 
-        fe = fg.add_entry()
-        fe.id(str(item['id']))
-        fe.title(payload['title']['romaji'])
-        fe.link(href = payload['siteUrl'])
-        fe.description(payload['description'])
+    del import_cache
 
-    return Response(content = fg.rss_str(pretty = True), media_type = 'application/rss+xml')
+load(app)
