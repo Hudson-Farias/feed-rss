@@ -9,10 +9,13 @@ Este projeto é um hub de feeds RSS que centraliza diferentes fontes de dados. A
 
 ## Tecnologias e Ferramentas Usadas
 
+- **Python 3.12**: Versão utilizada para desenvolvimento.
 - **FastAPI**: Framework web para a criação da API.
 - **Uvicorn**: Servidor ASGI para rodar a aplicação FastAPI.
 - **Feedgen**: Biblioteca para gerar feeds RSS.
 - **httpx**: Cliente HTTP assíncrono para realizar requisições.
+- **BeautifulSoup4**: Biblioteca para parsear conteúdo HTML.
+- **Pydantic**: Para validação e modelagem de dados.
 
 ## Como Rodar o Projeto
 
@@ -20,12 +23,12 @@ Este projeto é um hub de feeds RSS que centraliza diferentes fontes de dados. A
 
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/Hudson-Farias/feed-rss.git
+    git clone https://github.com/seu-usuario/repo-nome.git
     ```
 
 2. Navegue até o diretório do projeto:
     ```bash
-    cd feed-rss
+    cd repo-nome
     ```
 
 3. Com o Docker Compose, basta executar:
@@ -41,17 +44,29 @@ Este projeto é um hub de feeds RSS que centraliza diferentes fontes de dados. A
 
 Se preferir rodar sem o Docker, siga as instruções abaixo:
 
-1. Instale as dependências:
+1. **Recomenda-se o uso do asdf para gerenciar a versão do Python**:
+    ```bash
+    asdf install python 3.12.0
+    ```
+
+2. Crie e ative um ambiente virtual:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Linux/macOS
+    venv\Scripts\activate  # Windows
+    ```
+
+3. Instale as dependências:
     ```bash
     pip install -r requirements.txt
     ```
 
-2. Rode o servidor local:
+4. Rode o servidor local:
     ```bash
     uvicorn main:app --reload
     ```
 
-3. Acesse a aplicação via `http://localhost:8000`.
+5. Acesse a aplicação via `http://localhost:8000`.
 
 ## Contribuições
 
