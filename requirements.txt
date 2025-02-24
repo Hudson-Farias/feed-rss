@@ -1,7 +1,5 @@
 fastapi
 uvicorn
 feedgen
-python-dotenv
 httpx
 beautifulsoup4
-pydantic
