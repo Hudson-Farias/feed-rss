@@ -2,8 +2,8 @@ from httpx import AsyncClient
 from datetime import datetime, timedelta
 
 
-async def anilist_calendary():
-    with open('anilist/calendary/calendary.gql', 'r', encoding = 'utf8') as file: graphql = file.read()
+async def anilist_calendar():
+    with open('anilist/calendar/calendar.gql', 'r', encoding = 'utf8') as file: graphql = file.read()
     data = []
 
     now = datetime.now()

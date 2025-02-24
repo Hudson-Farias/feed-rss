@@ -1,16 +1,16 @@
 from fastapi import APIRouter, Response
 
 from utils.feed_generator import feed_generator
-from anilist.calendary import anilist_calendary
+from anilist.calendar import anilist_calendar
 
 
 router = APIRouter()
 
-@router.get('/anilist/calendary', status_code = 200, response_class = Response)
-async def anilist_calendary_rss():
+@router.get('/anilist/calendar', status_code = 200, response_class = Response)
+async def anilist_calendar_rss():
     fg = feed_generator('Anime calendar RSS', 'Anime calendar.')
 
-    data = await anilist_calendary()
+    data = await anilist_calendar()
 
     for item in data:
         payload = item['media']
