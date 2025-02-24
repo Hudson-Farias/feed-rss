@@ -1,0 +1,28 @@
+query ($page: Int, $airingAt_greater: Int, $airingAt_lesser: Int) 
+{
+    Page (page: $page) 
+    {
+        pageInfo
+        {
+            hasNextPage
+        }
+
+        airingSchedules (airingAt_greater: $airingAt_greater, airingAt_lesser: $airingAt_lesser)
+        {    
+            id
+            media
+            {
+                title
+                {
+                    romaji
+                }
+                
+                description
+                siteUrl
+                
+                isAdult
+                updatedAt
+            }
+        }
+    }
+}
