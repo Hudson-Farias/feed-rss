@@ -3,3 +3,4 @@ uvicorn
 feedgen
 httpx
 beautifulsoup4
+playwright

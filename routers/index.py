@@ -7,6 +7,12 @@ router = APIRouter()
 
 data = [
     {
+        'title': 'Workana crawler RSS',
+        'url': '/workana',
+        'description': 'The Workana crawler feed fetches the latest job opportunities from the Workana platform and formats them as an RSS feed, making it easier to track them using RSS readers.'
+
+    },
+    {
         'title': 'Anime Calendar',
         'url': '/anilist/calendar',
         'description': 'The anime calendar fetches anime released in the past week and uses GraphQL to showcase my skills with the tool.'
