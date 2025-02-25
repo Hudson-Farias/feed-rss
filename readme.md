@@ -14,6 +14,7 @@ Este projeto é um hub de feeds RSS que centraliza diferentes fontes de dados. A
 - **Uvicorn**: Servidor ASGI para rodar a aplicação FastAPI.
 - **Feedgen**: Biblioteca para gerar feeds RSS.
 - **httpx**: Cliente HTTP assíncrono para realizar requisições.
+- **Playwright**: Automação de navegação para extração de dados dinâmicos.
 - **BeautifulSoup4**: Biblioteca para parsear conteúdo HTML.
 - **Pydantic**: Para validação e modelagem de dados.
 

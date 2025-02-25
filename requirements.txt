@@ -2,5 +2,5 @@ fastapi
 uvicorn
 feedgen
 httpx
-beautifulsoup4
 playwright
+beautifulsoup4
