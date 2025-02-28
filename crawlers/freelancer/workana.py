@@ -26,7 +26,7 @@ def date_parse(string: str):
 
     date = datetime.now() - days_back
     return int(date.timestamp())
-    
+
 
 mounths = {
     'janeiro': 'January',
@@ -53,9 +53,7 @@ url = 'https://www.workana.com'
 
 async def workana_crawler():
     data = get_cache('workana')
-    if data:
-        print('cache')
-        return data
+    if data: return data
 
     data = []
     async with async_playwright() as p:
@@ -90,5 +88,4 @@ async def workana_crawler():
             data.append(job)
 
     set_cache('workana', data)
-    print('save cache')
     return data
