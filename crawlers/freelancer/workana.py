@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from re import match, sub
 
+from utils.redis import set_cache, get_cache
 
 def date_parse(string: str):
     string = string.lower()
@@ -51,6 +52,9 @@ def translate(date: str):
 url = 'https://www.workana.com'
 
 async def workana_crawler():
+    data = get_cache('workana')
+    if data: return data
+
     data = []
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless = True)
@@ -83,4 +87,5 @@ async def workana_crawler():
 
             data.append(job)
 
-        return data
+    set_cache('workana', data)
+    return data

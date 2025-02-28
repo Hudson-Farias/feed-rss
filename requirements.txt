@@ -1,5 +1,7 @@
 fastapi
 uvicorn
+python-dotenv
+redis
 feedgen
 httpx
 playwright
